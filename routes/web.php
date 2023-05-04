@@ -37,8 +37,9 @@ Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
     Route::get('/stats/{any}', function ($mylink) {
 
         $path = 'vendor/' . $mylink;
-       
+
         $path=str_replace('/','\\',$path);
+        dd(public_path($path));
         if (File::exists(public_path($path))) {
             $contentType=(new MymeType())->mime_type($path);
             $response = new Illuminate\Http\Response(File::get(public_path($path)), 200);
@@ -46,7 +47,7 @@ Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
             dd("Exist");
             return $response;
         } else {
-            dd("not exist");
+            // dd("not exist");
             abort(404);
         }
     })->where('any', '.*');
