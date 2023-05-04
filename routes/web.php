@@ -35,8 +35,9 @@ Route::post('/updatearticle',[ArticleController::class,"update"]);
 
 Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
     Route::get('/stats/{any}', function ($mylink) {
-        dd("tonga");
+
         $path = 'vendor/' . $mylink;
+        dd($path);
         $path=str_replace('/','\\',$path);
         if (File::exists(public_path($path))) {
             $contentType=(new MymeType())->mime_type($path);
