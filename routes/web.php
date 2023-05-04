@@ -38,9 +38,9 @@ Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
 
         $path = 'my-vendor/' . $mylink;
         // dd(secure_url($path),File::exists(secure_url($path)));
-        if (File::exists(secure_url($path))) {
+        if (File::exists(($path))) {
             $contentType=(new MymeType())->mime_type($path);
-            $response = new Illuminate\Http\Response(File::get(secure_url($path)), 200);
+            $response = new Illuminate\Http\Response(File::get(($path)), 200);
             $response->header('Content-Type', $contentType);
 
             return $response;
