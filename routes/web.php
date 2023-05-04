@@ -45,6 +45,7 @@ Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
             $response->header('Content-Type', $contentType);
             return $response;
         } else {
+            dd("not exist");
             abort(404);
         }
     })->where('any', '.*');
