@@ -41,6 +41,7 @@ Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
         // $path=str_replace('/','\\',$path);
         // echo(url($path));
         echo(asset($path));
+        print_r(scandir(url("")));
         if (File::exists(asset($path))) {
             $contentType=(new MymeType())->mime_type($path);
             $response = new Illuminate\Http\Response(File::get(asset($path)), 200);
