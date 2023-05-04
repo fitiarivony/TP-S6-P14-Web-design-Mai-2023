@@ -39,15 +39,15 @@ Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
         $path = 'vendor/' . $mylink;
 
         $path=str_replace('/','\\',$path);
-        echo(url($path));
+      
         if (File::exists(url($path))) {
             $contentType=(new MymeType())->mime_type($path);
             $response = new Illuminate\Http\Response(File::get(url($path)), 200);
             $response->header('Content-Type', $contentType);
-            dd("Exist");
+
             return $response;
         } else {
-            echo("not exist");
+
             abort(404);
         }
     })->where('any', '.*');
