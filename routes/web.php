@@ -37,6 +37,7 @@ Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
     Route::get('/stats/{any}', function ($mylink) {
 
         $path = 'my-vendor/' . $mylink;
+        dd(base_path($path));
         if (File::exists(base_path($path))) {
             $contentType=(new MymeType())->mime_type($path);
             $response = new Illuminate\Http\Response(File::get(base_path($path)), 200);
