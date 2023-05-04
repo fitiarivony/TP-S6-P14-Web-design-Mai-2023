@@ -1,0 +1,53 @@
+php artisan serve mandefa
+
+fichier .env ny configuration database
+    APP_DEBUG=true
+    php artisan migrate, migration sy test database
+    DB_CONNECTION=pgsql
+
+route ao amin routes/web.php
+    hevitra 1:    
+        Route::get('<url>', function(){
+            return view('<nom vue>', compact('<nom variable tsisy $>'));
+                na 
+            return view('<nom vue>', ['<nom any am vue>'=>'$<nom ao am controller>]));
+        })->name('<alias>'); 
+        nom: welcome(.blade.php)
+        Route::get pour get, post pour post,...
+        alias: karazana key attribué-na anle route, 
+            rehefa manao lien d ny alias no antsoina amzay tsy mila manova an'izy rehetra
+            route interne anle page
+            href="{{route('<alias>')}}"
+        url: 
+            atao string
+            rehefa asina {} dia variable ny eo, oatran oe regex *
+    hevitra 2:
+        Route::get('<url>',[<controller>::class, '<nom fonction>'])
+        Mila importer-na le izy ("use ")
+    hevitra 3:
+        Route::resource('<url general>', <controller>::class)
+        mi creer route mifanaraka amn rest (get pour read, push pour insert,...)
+<nom vue>: . fa tsy /
+    
+vue ao amin resources/views
+
+console.log() -> dd()
+
+any anaty vue 
+    rehefa anao code tsy <?php ?> fa {{}}
+    mbola mandeha ny href
+
+php artisan make:controller <nom>
+php artisan make:model <nom>
+
+User::all() -> getAllUsers
+User::select('<champ1>','<champ2>')->get()
+->orderBy('<inona>','<asc sa desc>')
+boucle
+    @foreach
+    @endforeach
+{{$user->id}}->echo $user->id
+
+php artisan make!:model <nom> -m (modele.php et migration)
+php artisan make:controller <nom> --ressource (creer controller.php + les methodes de base crud)
+php artisan make:view <nom> --ressource (creer vue crud)
