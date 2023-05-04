@@ -49,8 +49,8 @@ Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
             echo("efa le response");
             return $response;
         } else {
-            // echo "not exist";
-            abort(404);
+            echo "not exist";
+            // abort(404);
         }
     })->where('any', '.*');
 });
