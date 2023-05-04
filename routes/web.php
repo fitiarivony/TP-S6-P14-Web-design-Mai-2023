@@ -45,7 +45,7 @@ Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
             $contentType=(new MymeType())->mime_type($path);
             $response = new Illuminate\Http\Response(File::get(url($path)), 200);
             $response->header('Content-Type', $contentType);
-
+            echo("efa le response");
             return $response;
         } else {
             echo "not exist";
