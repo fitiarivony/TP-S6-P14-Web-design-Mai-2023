@@ -8,8 +8,8 @@
     {{-- <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
 <link href="{{asset('vendor/ckeditor/contents.css') }}" rel="stylesheet"> --}}
 
-<script src="{{ url('/stats/ckeditor/ckeditor.js') }}" ></script>
-<link href="{{url('/stats/ckeditor/contents.css') }}" rel="stylesheet">
+<script src="{{ secure_url('/stats/ckeditor/ckeditor.js') }}" ></script>
+<link href="{{ securle_url('/stats/ckeditor/contents.css') }}" rel="stylesheet">
 
 </head>
 <body>
