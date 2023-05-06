@@ -67,7 +67,7 @@ class ArticleController extends Controller
         $article->idsary=$sary->id;
         $article->save();
         // return
-        return redirect('/');
+        // return redirect('/');
         // Route::redirect( '/articles');
     }
 
