@@ -75,8 +75,8 @@ class ArticleController extends Controller
     {
         $filename = time() . '.' . $request->image->extension();
         $publicPath=base_path('public');
-        if (!is_dir($publicPath.'/my-vendor/images')) {
-            dd('The directory does not exist');
+        if (!is_writable($publicPath.'/my-vendor/images')) {
+            dd('The directory   is not writable');
         }else dd("writable");
         $request->image->move(($publicPath.'/my-vendor/images'), $filename);
         $pic=new SaryModel();
