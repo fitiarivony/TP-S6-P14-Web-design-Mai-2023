@@ -16,3 +16,7 @@ NIXPACKS_PKGS=php81Extensions.redis php81Extensions.gd
 QUEUE_CONNECTION=sync
 SESSION_DRIVER=file
 SESSION_LIFETIME=120
+
+//after that 
+php artisan key:generate
+composer install

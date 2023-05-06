@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Models\MymeType;
 use Illuminate\Support\Facades\Route;
@@ -29,25 +30,38 @@ Route::get('/create-article',[ArticleController::class,"create"])->name("essai")
 Route::post('/article',[ArticleController::class,"store"]);
 Route::get('/article-{id}-{slug}',[ArticleController::class,"showArticle"])->where('slug', '([A-Za-z0-9\-]+)');;
 Route::get('/articles',[ArticleController::class,"index"]);
-Route::get('/update-article-{id}',[ArticleController::class,"show"]);
+Route::get('/update-article-{id}-{slug}',[ArticleController::class,"show"])->where('slug', '([A-Za-z0-9\-]+)');;
 Route::post('/updatearticle',[ArticleController::class,"update"]);
+Route::get('/delete-article-{id}',[ArticleController::class,"delete"]);
 
+
+Route::prefix('admin')->group(function () {
+    Route::view('/login-admin', 'admin.login');
+    Route::post('/login-admin',[AdminController::class,"login"]);
+    Route::get('/deconnexion',[AdminController::class,"deconnexion"]);
+});
 
 Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
     Route::get('/stats/{any}', function ($mylink) {
+        $path = 'vendor/' . $mylink;
 
-        $path = 'my-vendor/' . $mylink;
-        // dd(secure_url($path),File::exists(secure_url($path)));
-        if (File::exists(($path))) {
+        $path=str_replace('/','\\',$path);
+        if (File::exists(public_path($path))) {
             $contentType=(new MymeType())->mime_type($path);
-            $response = new Illuminate\Http\Response(File::get(($path)), 200);
+            $response = new Illuminate\Http\Response(File::get(public_path($path)), 200);
             $response->header('Content-Type', $contentType);
-
             return $response;
         } else {
-
             abort(404);
         }
     })->where('any', '.*');
 });
 
+
+Route::group(['namespace' => 'App\Http\Controllers'], function()
+{
+    Route::get('/image-upload', 'ImageUploadController@index')->name('image-upload.index');
+    Route::post('/image-upload', 'ImageUploadController@upload')->name('image-upload.post');
+});
+
+//test paginate

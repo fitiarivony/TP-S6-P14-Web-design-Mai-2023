@@ -1,34 +1,76 @@
 <?php use Illuminate\Support\Str; ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Article</th>
-                <th scope="col">Titre</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($articles as $article)
-            <tr>
-                <td>{{ $article->idarticle }}</td>
-                <td>{{ $article->resumee }}</td>
-                <td><a href="{{ asset("article-".$article->id."-".Str::slug($article->titre)) }}">Voir article</a> </td>
-                <td><a href="{{ asset("update-article-".$article->id) }}">Mettre article</a> </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    <a href="{{ asset("create-article/")}}">Ajouter un nouvel article</a>
+@extends('layout.navbar-admin')
 
-</body>
-</html>
+@section('content')
+
+<main>
+    <div class="page-section">
+    <div class="row justify-content-center">
+
+       @for ($i=0;$i<count($articles);$i++)
+        @if ($i>0 && $i%3==0)
+    </div>
+    <div class="row justify-content-center">
+        @endif
+        <div class="col-12 d-flex col-lg-auto py-3 wow {{ $styles[$i%3]}}">
+            <div class="card-pricing flex-fill">
+              <div class="header">
+                <div class="price-icon">
+                    @if ($articles[$i]->link==null)
+                    <span class="mai-scan-circle"></span>
+                    @else
+                    <img  class="card-img-top" src="{{ url('/stats/images/'.$articles[$i]->link)}}" >
+                    @endif
+
+                </div>
+                <div class="price-title">{{ $articles[$i]->titre }}</div>
+              </div>
+              <div class="body py-3">
+
+                <div class="price-info h-100">
+                  <p>{{ $articles[$i]->resumee }}</p>
+                </div>
+              </div>
+              <div class="footer">
+                <a href="{{ asset("article-".$articles[$i]->id."-".Str::slug($articles[$i]->titre)) }}"
+                    class="btn btn-outline rounded-pill">View more</a>
+              </div>
+              <div class="divider mx-auto"></div>
+              @if (session('admin')!=null)
+              <div class="footer">
+
+                <div class="row">
+                    <div class="col">
+                        <a href="{{ asset("update-article-".$articles[$i]->id).'-'.Str::slug($articles[$i]->titre) }}"
+                            class="btn btn-outline-warning rounded-pill">Update</a>
+                    </div>
+                    <div class="col">
+                        <a href="{{ asset("delete-article-".$articles[$i]->id) }}"
+                            class="btn btn-outline-danger rounded-pill">Delete</a>
+                    </div>
+                </div>
+
+              </div>
+              @endif
+            </div>
+          </div>
+       @endfor
+    </div>
+    <div style="height: 10px;"></div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+        <div class="d-flex justify-content-center" >
+            {!! $articles->links() !!}
+        </div>
+    </div>
+        <div class="col"></div>
+    </div>
+
+
+</main>
+@endsection
+
+
+
 

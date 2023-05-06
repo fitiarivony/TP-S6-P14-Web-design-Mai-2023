@@ -17,6 +17,7 @@ class CompressResponse
             $response->header('Content-Encoding', 'gzip');
             $response->header('Vary', 'Accept-Encoding');
             $response->header('Content-Length', strlen($response->getContent()));
+           
         }
 
         return $response;
