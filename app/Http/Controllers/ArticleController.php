@@ -74,7 +74,8 @@ class ArticleController extends Controller
     public function upload(ImageUploadRequest $request)
     {
         $filename = time() . '.' . $request->image->extension();
-        if (!is_dir('public/my-vendor/images')) {
+        $publicPath=base_path('public');
+        if (!is_dir($publicPath.'/my-vendor/images')) {
             dd('The directory does not exist');
         }
         $request->image->move(('public/my-vendor/images'), $filename);
