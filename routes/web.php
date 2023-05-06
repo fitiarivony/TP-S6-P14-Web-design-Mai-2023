@@ -43,9 +43,9 @@ Route::prefix('admin')->group(function () {
 
 Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
     Route::get('/stats/{any}', function ($mylink) {
-        $path = 'vendor/' . $mylink;
+        $path = 'my-vendor/' . $mylink;
 
-        $path=str_replace('/','\\',$path);
+        // $path=str_replace('/','\\',$path);
         if (File::exists(($path))) {
             $contentType=(new MymeType())->mime_type($path);
             $response = new Illuminate\Http\Response(File::get(($path)), 200);
