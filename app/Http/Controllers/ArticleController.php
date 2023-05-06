@@ -74,7 +74,9 @@ class ArticleController extends Controller
     public function upload(ImageUploadRequest $request)
     {
         $filename = time() . '.' . $request->image->extension();
-
+        if (!is_dir('public/my-vendor/images')) {
+            dd('The directory does not exist');
+        }
         $request->image->move(('public/my-vendor/images'), $filename);
         $pic=new SaryModel();
         $pic->link=$filename;
