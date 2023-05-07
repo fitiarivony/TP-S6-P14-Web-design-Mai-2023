@@ -74,14 +74,12 @@ class ArticleController extends Controller
     public function upload(ImageUploadRequest $request)
     {
         $filename = time() . '.' . $request->image->extension();
-
+        $path=$request->image->store('public/images');
      // $path= $request->image->store('images','public',$filename);
-      if ($request->image->store('public/images')) {
-        echo 'Le fichier a été sauvegardé avec succès!';
-        // echo 'Nom du fichier : ' . $file->getClientOriginalName();
-        // echo 'Taille du fichier : ' . $file->getSize() . ' octets';
+    if (File::exists(storage_path('app/' . $path))) {
+        echo 'Le fichier a été sauvegardé.';
     } else {
-        echo 'Erreur lors de la sauvegarde du fichier.';
+        echo 'Le fichier n\'a pas été sauvegardé.';
     }
 
         $pic=new SaryModel();
