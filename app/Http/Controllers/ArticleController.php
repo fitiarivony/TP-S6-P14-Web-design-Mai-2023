@@ -75,7 +75,7 @@ class ArticleController extends Controller
     {
         $filename = time() . '.' . $request->image->extension();
       $path= $request->image->store('images','public',$filename);
-      dd($path);
+      dd($path,$filename);
         $pic=new SaryModel();
         $pic->link=$filename;
         $pic->save();
