@@ -75,9 +75,7 @@ class ArticleController extends Controller
     {
         $filename = time() . '.' . $request->image->extension();
         $publicPath=base_path('public');
-        if (!is_writable($publicPath.'/my-vendor/images')) {
-            chmod($publicPath.'/my-vendor/images', 0777);
-        }else dd("writable");
+      
         $request->image->store('public/images',$filename);
         $pic=new SaryModel();
         $pic->link=$filename;
