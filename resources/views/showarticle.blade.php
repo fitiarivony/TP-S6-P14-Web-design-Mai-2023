@@ -11,7 +11,7 @@
             && File::exists(File::exists(storage_path('app/public/images' . $article->link))))
 
             <img  class="card-img-top img-thumbnail"
-            style="height:200px;" src="{{ url('/'.'sary'.'/'.$article->link)}}" >
+            style="height:200px;" src="{{ secure_url('/'.'sary'.'/'.$article->link)}}" >
             @else
             <img  class="card-img-top img-thumbnail"
             style="height:200px;" src="{{ $article->base_64 }}" >
