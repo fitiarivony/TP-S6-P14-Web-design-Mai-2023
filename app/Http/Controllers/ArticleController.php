@@ -77,7 +77,7 @@ class ArticleController extends Controller
         $path=$request->image->store('public/images');
      // $path= $request->image->store('images','public',$filename);
     if (File::exists(storage_path('app/' . $path))) {
-        echo 'Le fichier a été sauvegardé.';
+        echo 'Le fichier a été sauvegardé.  '.storage_path('app/' . $path);
     } else {
         echo 'Le fichier n\'a pas été sauvegardé.';
     }
