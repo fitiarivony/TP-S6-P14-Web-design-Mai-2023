@@ -58,6 +58,23 @@ Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
 });
 
 
+Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
+    Route::get('/sary/{any}', function ($mylink) {
+        $path ='storage/app/public/images/' .$mylink;
+
+        // $path=str_replace('/','\\',$path);
+        if (File::exists(storage_path('app/' . $path))) {
+            $contentType=(new MymeType())->mime_type($path);
+            $response = new Illuminate\Http\Response(File::get(storage_path('app/' . $path)), 200);
+            $response->header('Content-Type', $contentType);
+            return $response;
+        } else {
+            abort(404);
+        }
+    })->where('any', '.*');
+});
+
+
 Route::group(['namespace' => 'App\Http\Controllers'], function()
 {
     Route::get('/image-upload', 'ImageUploadController@index')->name('image-upload.index');

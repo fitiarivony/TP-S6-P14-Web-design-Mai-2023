@@ -19,7 +19,7 @@
                     @if ($articles[$i]->link==null)
                     <span class="mai-scan-circle"></span>
                     @else
-                    <img  class="card-img-top" src="{{ asset('images/'.$articles[$i]->link)}}" >
+                    <img  class="card-img-top" src="{{ secure_url('/sary//'.$articles[$i]->link)}}" >
                     @endif
 
                 </div>
