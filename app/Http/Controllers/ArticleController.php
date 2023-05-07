@@ -73,22 +73,16 @@ class ArticleController extends Controller
 
     public function upload(ImageUploadRequest $request)
     {
-        $filename = time() . '.' . $request->image->extension();
         $path=$request->image->store('public/images');
         $filename=basename($path);
-     // $path= $request->image->store('images','public',$filename);
-    if (File::exists(storage_path('app/' . $path))) {
-        echo 'Le fichier a été sauvegardé.  '.storage_path('app/' . $path)."  ".$filename;
-    } else {
-        echo 'Le fichier n\'a pas été sauvegardé.';
-    }
+
 
         $pic=new SaryModel();
         $pic->link=$filename;
         $pic->save();
         $sary=SaryModel::orderBy('id','desc')->limit(1)->get()->first();
         // save uploaded image filename here to your database
-
+        return redirect("/");
         return $sary;
     }
 
