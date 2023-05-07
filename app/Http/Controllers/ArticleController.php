@@ -67,8 +67,8 @@ class ArticleController extends Controller
         $article->idsary=$sary->id;
         $article->save();
         // return
-        // return redirect('/');
-        Route::redirect( '/articles');
+        return redirect('/');
+
     }
 
     public function upload(ImageUploadRequest $request)
