@@ -74,7 +74,8 @@ class ArticleController extends Controller
     public function upload(ImageUploadRequest $request)
     {
         $filename = time() . '.' . $request->image->extension();
-        $request->image->store('images','public',$filename);
+      $path= $request->image->store('images','public',$filename);
+      dd($path);
         $pic=new SaryModel();
         $pic->link=$filename;
         $pic->save();
