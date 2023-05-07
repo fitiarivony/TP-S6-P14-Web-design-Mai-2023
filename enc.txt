@@ -1,15 +1,15 @@
 APP_DEBUG=false
 APP_ENV=production
-APP_KEY=base64:HF8a0Hxa/QjlZCvOR6fUYB780sW2VU9YMdAJiEGdPY8=
+APP_KEY=base64:hJsRJtkPsZW3S9pa0cy8Ygi6G6cmgBBy3d0p6OAc5hg=
 APP_NAME=laravel
 APP_URL=http://localhost
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
 DB_CONNECTION=pgsql
 DB_DATABASE=railway
-DB_HOST=containers-us-west-43.railway.app
-DB_PASSWORD=3zWvjkZvtQeoxHEwPwkI
-DB_PORT=7509
+DB_HOST=containers-us-west-73.railway.app
+DB_PASSWORD=E4F64HE52VCusyKFMCX1
+DB_PORT=5777
 DB_USERNAME=postgres
 FILESYSTEM_DRIVER=local
 NIXPACKS_PKGS=php81Extensions.redis php81Extensions.gd
@@ -19,4 +19,5 @@ SESSION_LIFETIME=120
 
 //after that 
 php artisan key:generate
-composer install
+
+ my laravel project deployed in railway
