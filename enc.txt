@@ -21,3 +21,5 @@ SESSION_LIFETIME=120
 php artisan key:generate
 
  my laravel project deployed in railway
+
+/app/storage/app/public/images/1IKNRMyVOdv8d6c9PdoZjSQyVOgmdfdKSxfBEdid.jpg 
