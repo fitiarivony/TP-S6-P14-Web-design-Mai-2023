@@ -68,7 +68,7 @@ class ArticleController extends Controller
         $article->save();
         // return
         // return redirect('/');
-        // Route::redirect( '/articles');
+        Route::redirect( '/articles');
     }
 
     public function upload(ImageUploadRequest $request)
@@ -82,7 +82,7 @@ class ArticleController extends Controller
         $pic->save();
         $sary=SaryModel::orderBy('id','desc')->limit(1)->get()->first();
         // save uploaded image filename here to your database
-        return redirect("/");
+
         return $sary;
     }
 
