@@ -22,7 +22,12 @@
           <div class="container">
             <a href="/" class="navbar-brand">#Talking<span class="text-primary">AI.</span></a>
 
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler"
+            data-toggle="collapse"
+            data-target="#navbarContent"
+            aria-controls="navbarContent"
+             aria-expanded="false" 
+             aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
 

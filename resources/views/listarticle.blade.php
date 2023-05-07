@@ -1,4 +1,7 @@
-<?php use Illuminate\Support\Str; ?>
+<?php use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+
+?>
 @extends('layout.navbar-admin')
 
 @section('content')
@@ -16,12 +19,19 @@
             <div class="card-pricing flex-fill">
               <div class="header">
                 <div class="price-icon">
-                    @if ($articles[$i]->link==null)
-                    <span class="mai-scan-circle"></span>
-                    @else
-                    <img  class="card-img-top"
-                    style="height:100px;" src="{{ secure_url('/'.'sary'.'/'.$articles[$i]->link)}}" >
-                    @endif
+                       @if ($article[$i]->link==null && $articles[$i]->base_64==null)
+            <span class="mai-scan-circle"></span>
+            @elseif ($article[$i]->link!=null
+            && File::exists(File::exists(storage_path('app/public/images' . $article[$i]->link))))
+
+            <img  class="card-img-top img-thumbnail"
+            style="height:200px;" src="{{ secure_url('/'.'sary'.'/'.$article[$i]->link)}}" >
+            @else
+            <img  class="card-img-top img-thumbnail"
+            style="height:200px;" src="{{ $article[$i]->base_64 }}" >
+            @endif
+
+
 
                 </div>
                 <div class="price-title"  style="height:100px;">{{ $articles[$i]->titre }}</div>
