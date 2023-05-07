@@ -60,7 +60,7 @@ Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
 
 Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
     Route::get('/sary/{any}', function ($mylink) {
-        $path ='storage/app/public/images/' .$mylink;
+        $path ='public/images/' .$mylink;
         dd(File::exists(storage_path('app/' . $path)),storage_path('app/' . $path));
         // $path=str_replace('/','\\',$path);
         if (File::exists(storage_path('app/' . $path))) {
