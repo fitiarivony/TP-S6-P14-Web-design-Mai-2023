@@ -19,11 +19,12 @@
                     @if ($articles[$i]->link==null)
                     <span class="mai-scan-circle"></span>
                     @else
-                    <img  class="card-img-top" src="{{ secure_url('/'.'sary'.'/'.$articles[$i]->link)}}" >
+                    <img  class="card-img-top"
+                    style="height:100px;" src="{{ secure_url('/'.'sary'.'/'.$articles[$i]->link)}}" >
                     @endif
 
                 </div>
-                <div class="price-title">{{ $articles[$i]->titre }}</div>
+                <div class="price-title"  style="height:100px;">{{ $articles[$i]->titre }}</div>
               </div>
               <div class="body py-3">
 
