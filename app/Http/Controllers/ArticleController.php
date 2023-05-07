@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\File;
 
 
 class ArticleController extends Controller
