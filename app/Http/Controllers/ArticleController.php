@@ -177,7 +177,7 @@ class ArticleController extends Controller
         // echo $article;
         $article->update();
         $article->slugtitre=$this->slugtitle($article->titre);
-        $view=view('showarticle',["article"=>$article])->render();
+        $view=view('showarticle',["article"=>$article,"title"=>"Article"])->render();
 
         if(Cache::has('showarticle-'.$request->input('id'))){
 
