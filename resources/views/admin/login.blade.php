@@ -20,12 +20,12 @@
                 @csrf
               <div class="py-2">
                 <label for="email" class="form-label">Email:</label>
-                <input type="email" name="email" class="form-control" placeholder="Email..">
+                <input type="email" value="admin@gmail.com" name="email" class="form-control" placeholder="Email..">
               </div>
               <div style="height: 10px;"></div>
               <div class="py-2">
                 <label for="password" class="form-label">Mot de passe:</label>
-                <input type="password" name="mdp" class="form-control" placeholder="Mot de passe...">
+                <input type="password" value="admin" name="mdp" class="form-control" placeholder="Mot de passe...">
               </div>
 
               <button type="submit" class="btn btn-primary rounded-pill mt-4">Log in</button>
