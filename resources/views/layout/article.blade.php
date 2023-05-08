@@ -15,14 +15,14 @@
   <link rel="stylesheet" href="{{ url('/stats/template-assets/css/theme.css') }} "> --}}
 
 
-  <link rel="stylesheet" href="{{ asset('my-vendor/template-assets/vendor/animate/animate.css') }}">
-  <link rel="stylesheet" href="{{ asset('my-vendor/template-assets/css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ secure_url('my-vendor/template-assets/vendor/animate/animate.css') }}">
+  <link rel="stylesheet" href="{{  secure_url('my-vendor/template-assets/css/bootstrap.css') }}">
 
-  <link rel="stylesheet" href="{{ asset('my-vendor/template-assets/css/maicons.css') }}">
+  <link rel="stylesheet" href="{{  secure_url('my-vendor/template-assets/css/maicons.css') }}">
 
-  <link rel="stylesheet" href="{{ asset('my-vendor/template-assets/vendor/owl-carousel/css/owl.carousel.css') }}">
+  <link rel="stylesheet" href="{{  secure_url('my-vendor/template-assets/vendor/owl-carousel/css/owl.carousel.css') }}">
 
-  <link rel="stylesheet" href="{{ asset('my-vendor/template-assets/css/theme.css') }} ">
+  <link rel="stylesheet" href="{{  secure_url('my-vendor/template-assets/css/theme.css') }} ">
 
   @yield('headplus')
 </head>
@@ -45,7 +45,7 @@
 
                 @if (session('admin')!=null)
                 <li class="nav-item">
-                    <a href="{{ asset("create-article/")}}"
+                    <a href="{{  secure_url("create-article/")}}"
                     class="nav-link btn btn-outline rounded-pill">
                     Register a new article</a>
                   </li>
@@ -107,21 +107,21 @@
 
 <script src="{{ url('/stats/template-assets/js/theme.js');}}"></script> --}}
 
-<script src="{{ asset("my-vendor/template-assets/js/jquery-3.5.1.min.js")}}"></script>
+<script src="{{  secure_url("my-vendor/template-assets/js/jquery-3.5.1.min.js")}}"></script>
 
-<script src="{{asset('my-vendor/template-assets/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ secure_url('my-vendor/template-assets/js/bootstrap.bundle.min.js')}}"></script>
 
-<script src="{{ asset('my-vendor/template-assets/vendor/wow/wow.min.js')}}"></script>
+<script src="{{  secure_url('my-vendor/template-assets/vendor/wow/wow.min.js')}}"></script>
 
-<script src="{{ asset('my-vendor/template-assets/vendor/owl-carousel/js/owl.carousel.min.js')}} "></script>
+<script src="{{  secure_url('my-vendor/template-assets/vendor/owl-carousel/js/owl.carousel.min.js')}} "></script>
 
-<script src="{{ asset('my-vendor/template-assets/vendor/waypoints/jquery.waypoints.min.js')}}"></script>
+<script src="{{  secure_url('my-vendor/template-assets/vendor/waypoints/jquery.waypoints.min.js')}}"></script>
 
-<script src="{{ asset('my-vendor/template-assets/vendor/animateNumber/jquery.animateNumber.min.js')}}"></script>
+<script src="{{  secure_url('my-vendor/template-assets/vendor/animateNumber/jquery.animateNumber.min.js')}}"></script>
 
-<script src="{{ asset('my-vendor/template-assets/js/google-maps.js')}}"></script>
+<script src="{{  secure_url('my-vendor/template-assets/js/google-maps.js')}}"></script>
 
-<script src="{{ asset('my-vendor/template-assets/js/theme.js');}}"></script>
+<script src="{{  secure_url('my-vendor/template-assets/js/theme.js');}}"></script>
 
 </body>
 </html>
