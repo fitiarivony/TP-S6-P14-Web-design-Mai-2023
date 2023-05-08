@@ -26,7 +26,7 @@ use Illuminate\Support\Str;
 
 
                     <img  class="card-img-top img-thumbnail"
-                    src="{{ $articles[$i]->base_64 }}" alt="{{ $articles[$i]->resume }}">
+                    src="{{ $articles[$i]->base_64 }}" alt="{{ $articles[$i]->resumee }}">
 
                 </div>
                 <div class="price-title"  >{{ $articles[$i]->titre }}</div>
