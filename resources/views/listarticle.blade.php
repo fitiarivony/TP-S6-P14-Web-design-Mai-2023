@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 <main>
     <div class="page-section">
     <div class="row justify-content-center">
-       
+
        @for ($i=0;$i<count($articles);$i++)
         @if ($i>0 && $i%3==0)
     </div>
@@ -26,10 +26,10 @@ use Illuminate\Support\Str;
 
 
                     <img  class="card-img-top img-thumbnail"
-                    style="height:200px;" src="{{ $articles[$i]->base_64 }}" alt="{{ $articles[$i]->resume }}">
+                    src="{{ $articles[$i]->base_64 }}" alt="{{ $articles[$i]->resume }}">
 
                 </div>
-                <div class="price-title" style="height:50px;" >{{ $articles[$i]->titre }}</div>
+                <div class="price-title"  >{{ $articles[$i]->titre }}</div>
               </div>
               <div class="body py-3">
 

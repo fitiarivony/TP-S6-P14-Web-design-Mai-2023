@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="col-lg-6 py-3 pr-lg-5">
-          <h2 class="title-section ">{{ $article->titre }}</h2>
+          <h1 class="title-section ">{{ $article->titre }}</h1>
           <div class="divider"></div>
           <p>Categorie:<span class="badge badge-primary badge-lg">{{ $article->nomcategorie }}</span></p>
           <div class="container">
