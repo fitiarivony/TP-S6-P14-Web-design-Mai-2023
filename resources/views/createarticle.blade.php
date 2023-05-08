@@ -1,8 +1,12 @@
 @extends('layout.navbar-admin')
 
 @section('headplus')
-<script src="{{ url('/stats/ckeditor/ckeditor.js') }}" ></script>
-<link href="{{url('/stats/ckeditor/contents.css') }}" rel="stylesheet">
+{{-- <script src="{{ url('/stats/ckeditor/ckeditor.js') }}" ></script>
+<link href="{{url('/stats/ckeditor/contents.css') }}" rel="stylesheet"> --}}
+
+<script src="{{ secure_url('my-vendor/ckeditor/ckeditor.js') }}" ></script>
+<link href="{{secure_url('my-vendor/ckeditor/contents.css') }}" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 <meta name="description" content="Register an article">
 
