@@ -8,7 +8,7 @@
         <div class="col-lg-6 py-3">
           <div class="img-fluid text-center"  >
             <img  class="card-img-top img-thumbnail"
-             src="{{ $article->base_64 }}" alt={{$article->resume}}>
+             src="{{ $article->base_64 }}" alt={{$article->resumee}}>
           </div>
         </div>
         <div class="col-lg-6 py-3 pr-lg-5">
