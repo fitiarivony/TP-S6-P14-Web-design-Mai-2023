@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}</title>
-{{-- <link rel="stylesheet" href="{{ url('/stats/template-assets/vendor/animate/animate.css') }}">
-  <link rel="stylesheet" href="{{ url('/stats/template-assets/css/bootstrap.css') }}">
+<link rel="stylesheet" href="{{ secure_url('/stats/template-assets/vendor/animate/animate.css') }}">
+  <link rel="stylesheet" href="{{ secure_url('/stats/template-assets/css/bootstrap.css') }}">
 
-  <link rel="stylesheet" href="{{ url('/stats/template-assets/css/maicons.css') }}">
+  <link rel="stylesheet" href="{{ secure_url('/stats/template-assets/css/maicons.css') }}">
 
-  <link rel="stylesheet" href="{{ url('/stats/template-assets/vendor/owl-carousel/css/owl.carousel.css') }}">
+  <link rel="stylesheet" href="{{ secure_url('/stats/template-assets/vendor/owl-carousel/css/owl.carousel.css') }}">
 
-  <link rel="stylesheet" href="{{ url('/stats/template-assets/css/theme.css') }} "> --}}
+  <link rel="stylesheet" href="{{ secure_url('/stats/template-assets/css/theme.css') }} ">
 
-
-  <link rel="stylesheet" href="{{ secure_url('my-vendor/template-assets/vendor/animate/animate.css') }}">
+{{-- sans performance --}}
+  {{-- <link rel="stylesheet" href="{{ secure_url('my-vendor/template-assets/vendor/animate/animate.css') }}">
   <link rel="stylesheet" href="{{  secure_url('my-vendor/template-assets/css/bootstrap.css') }}">
 
   <link rel="stylesheet" href="{{  secure_url('my-vendor/template-assets/css/maicons.css') }}">
 
   <link rel="stylesheet" href="{{  secure_url('my-vendor/template-assets/vendor/owl-carousel/css/owl.carousel.css') }}">
 
-  <link rel="stylesheet" href="{{  secure_url('my-vendor/template-assets/css/theme.css') }} ">
+  <link rel="stylesheet" href="{{  secure_url('my-vendor/template-assets/css/theme.css') }} "> --}}
 
   @yield('headplus')
 </head>
@@ -91,23 +91,25 @@
     </div> <!-- .container -->
   </footer> <!-- .page-footer -->
 
-{{-- <script src="{{ url("/stats/template-assets/js/jquery-3.5.1.min.js")}}"></script>
+<script src="{{ secure_url("/stats/template-assets/js/jquery-3.5.1.min.js")}}"></script>
 
-<script src="{{url('/stats/template-assets/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{secure_url('/stats/template-assets/js/bootstrap.bundle.min.js')}}"></script>
 
-<script src="{{ url('/stats/template-assets/vendor/wow/wow.min.js')}}"></script>
+<script src="{{ secure_url('/stats/template-assets/vendor/wow/wow.min.js')}}"></script>
 
-<script src="{{ url('/stats/template-assets/vendor/owl-carousel/js/owl.carousel.min.js')}} "></script>
+<script src="{{ secure_url('/stats/template-assets/vendor/owl-carousel/js/owl.carousel.min.js')}} "></script>
 
-<script src="{{ url('/stats/template-assets/vendor/waypoints/jquery.waypoints.min.js')}}"></script>
+<script src="{{ secure_url('/stats/template-assets/vendor/waypoints/jquery.waypoints.min.js')}}"></script>
 
-<script src="{{ url('/stats/template-assets/vendor/animateNumber/jquery.animateNumber.min.js')}}"></script>
+<script src="{{ secure_url('/stats/template-assets/vendor/animateNumber/jquery.animateNumber.min.js')}}"></script>
 
-<script src="{{ url('/stats/template-assets/js/google-maps.js')}}"></script>
+<script src="{{ secure_url('/stats/template-assets/js/google-maps.js')}}"></script>
 
-<script src="{{ url('/stats/template-assets/js/theme.js');}}"></script> --}}
+<script src="{{ secure_url('/stats/template-assets/js/theme.js');}}"></script>
 
-<script src="{{  secure_url("my-vendor/template-assets/js/jquery-3.5.1.min.js")}}"></script>
+
+{{-- sans performance --}}
+{{-- <script src="{{  secure_url("my-vendor/template-assets/js/jquery-3.5.1.min.js")}}"></script>
 
 <script src="{{ secure_url('my-vendor/template-assets/js/bootstrap.bundle.min.js')}}"></script>
 
@@ -121,7 +123,7 @@
 
 <script src="{{  secure_url('my-vendor/template-assets/js/google-maps.js')}}"></script>
 
-<script src="{{  secure_url('my-vendor/template-assets/js/theme.js');}}"></script>
+<script src="{{  secure_url('my-vendor/template-assets/js/theme.js');}}"></script> --}}
 
 </body>
 </html>

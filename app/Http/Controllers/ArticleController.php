@@ -133,15 +133,15 @@ class ArticleController extends Controller
     public function showArticle($id)
     {
         //
-        // if(!Cache::has('showarticle-'.$id)){
+        if(!Cache::has('showarticle-'.$id)){
             $article=ArticleInfoModel::where("id",$id)->get()->first();
             $article->slugtitre=$this->slugtitle($article->titre);
             $view=view('showarticle',["article"=>$article,"title"=>"Article"])->render();
-            // Cache::put('showarticle-'.$id, $view);
+            Cache::put('showarticle-'.$id, $view);
 
-        // }
+        }
 
-        // return Cache::get('showarticle-'.$id);
+        return Cache::get('showarticle-'.$id);
         return $view;
     }
 
@@ -178,13 +178,13 @@ class ArticleController extends Controller
         // echo $article;
         $article->update();
         $article->slugtitre=$this->slugtitle($article->titre);
-        // $view=view('showarticle',["article"=>$article])->render();
+        $view=view('showarticle',["article"=>$article])->render();
 
-        // if(Cache::has('showarticle-'.$request->input('id'))){
+        if(Cache::has('showarticle-'.$request->input('id'))){
 
-        //     Cache::forget('showarticle-'.$request->input('id'));
-        // }
-        // Cache::put('showarticle-'.$request->input('id'), $view);
+            Cache::forget('showarticle-'.$request->input('id'));
+        }
+        Cache::put('showarticle-'.$request->input('id'), $view);
         return redirect('/');
     }
 
