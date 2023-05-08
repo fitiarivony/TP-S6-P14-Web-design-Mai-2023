@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategorieController;
 use App\Models\MymeType;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\File;
@@ -36,19 +37,19 @@ Route::get('/delete-article-{id}',[ArticleController::class,"delete"]);
 
 
 Route::prefix('admin')->group(function () {
-    Route::view('/login-admin', 'admin.login');
+    Route::view('/login-admin', 'admin.login',['title'=>'Login as an admin']);
     Route::post('/login-admin',[AdminController::class,"login"]);
     Route::get('/deconnexion',[AdminController::class,"deconnexion"]);
 });
 
 Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
     Route::get('/stats/{any}', function ($mylink) {
-        $path = 'my-vendor/' . $mylink;
+        $path = 'vendor/' . $mylink;
 
-        // $path=str_replace('/','\\',$path);
-        if (File::exists(($path))) {
+        $path=str_replace('/','\\',$path);
+        if (File::exists(public_path($path))) {
             $contentType=(new MymeType())->mime_type($path);
-            $response = new Illuminate\Http\Response(File::get(($path)), 200);
+            $response = new Illuminate\Http\Response(File::get(public_path($path)), 200);
             $response->header('Content-Type', $contentType);
             return $response;
         } else {
@@ -58,27 +59,17 @@ Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
 });
 
 
-Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
-    Route::get('/sary/{any}', function ($mylink) {
-        $path ='public/images/' .$mylink;
-        // dd(File::exists(storage_path('app/' . $path)),storage_path('app/' . $path));
-        // $path=str_replace('/','\\',$path);
-        if (File::exists(storage_path('app/' . $path))) {
-            $contentType=(new MymeType())->mime_type($path);
-            $response = new Illuminate\Http\Response(File::get(storage_path('app/' . $path)), 200);
-            $response->header('Content-Type', $contentType);
-            return $response;
-        } else {
-            abort(404);
-        }
-    })->where('any', '.*');
+Route::prefix('categorie')->group(function () {
+    Route::get('/list', [CategorieController::class, 'index']);
+    Route::get('/delete-{id}', [CategorieController::class, 'delete']);
+    Route::get('/categorie-article-update-{id}-{slug}',
+    [CategorieController::class,"edit"])
+    ->where('slug', '([A-Za-z0-9\-]+)');
+
+    Route::post('/update',[CategorieController::class,"update"]);
+    Route::view('/create','categorie.create',['title'=>'Create a new category']);
+    Route::post('',[CategorieController::class,"store"]);
 });
 
-
-Route::group(['namespace' => 'App\Http\Controllers'], function()
-{
-    Route::get('/image-upload', 'ImageUploadController@index')->name('image-upload.index');
-    Route::post('/image-upload', 'ImageUploadController@upload')->name('image-upload.post');
-});
-
-//test paginate
+Route::get('/search', [ArticleController::class, 'search']);
+Route::get('/searching', [ArticleController::class, 'searchArticle']);

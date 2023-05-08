@@ -11,8 +11,9 @@ use App\Models\SaryModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\File;
+
 
 
 class ArticleController extends Controller
@@ -27,13 +28,14 @@ class ArticleController extends Controller
         if($request->input('nbpaginate')!=null){
             $paginate=$request->input('nbpaginate');
         }
+
         $data=ArticleSaryModel::paginate($paginate);
         $style=array(
             0=>"fadeInLeft",
             1=>"fadeInUp",
             2=>"fadeInRight",
         );
-        return view("listarticle",["articles"=>$data,"styles"=>$style]);
+        return view("listarticle",["articles"=>$data,"styles"=>$style,"title"=>"TalkinAI articles"]);
     }
 
     /**
@@ -45,9 +47,31 @@ class ArticleController extends Controller
     {
         //
         $categorie=new Categorie();
-        return view('createarticle',["categories"=>$categorie->all()]);
+        return view('createarticle',["categories"=>$categorie->all(),"title"=>"Register article"]);
     }
 
+    public function search(){
+        $categorie=new Categorie();
+        return view('searcharticle',["categories"=>$categorie->all(),"title"=>"Search article"]);
+    }
+
+    public function searchArticle(Request $request){
+        $style=array(
+            0=>"fadeInLeft",
+            1=>"fadeInUp",
+            2=>"fadeInRight",
+        );
+        $categorie=[];
+        if($request->input('categorie')!=null) $categorie=$request->input('categorie');
+        $article=ArticleInfoModel::whereIn('idcategorie',$categorie)
+        ->orWhere('titre','like','%'.$request->input('recherche').'%')
+        ->orWhere('resumee','like','%'.$request->input('recherche').'%')
+        ->orWhere('contenu','like','%'.$request->input('recherche').'%')
+       ->paginate(3);
+        return view('searcharticle',["categories"=>(new Categorie())->all(),
+        "title"=>"Search article",
+        "articles"=>$article,"styles"=>$style]);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -68,21 +92,21 @@ class ArticleController extends Controller
         $article->save();
         // return
         return redirect('/');
-
+        // Route::redirect( '/articles');
     }
 
     public function upload(ImageUploadRequest $request)
     {
-        $path=$request->image->store('public/images');
-        $filename=basename($path);
-
-
+        $filename = time() . '.' . $request->image->extension();
+        $type = pathinfo($filename, PATHINFO_EXTENSION);
+        $data = file_get_contents($filename);
+        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
         $pic=new SaryModel();
-        $pic->link=$filename;
+        $pic->base_64=$base64;
         $pic->save();
         $sary=SaryModel::orderBy('id','desc')->limit(1)->get()->first();
         // save uploaded image filename here to your database
-
+        // dd($sary->id);
         return $sary;
     }
 
@@ -100,22 +124,25 @@ class ArticleController extends Controller
     {
         $article=Article::where("id",$id)->get()->first();
         $article->slugtitre=$this->slugtitle($article->titre);
-        return view('updatearticle',["article"=>$article,"categories"=>(new Categorie())->all()]);
+        return view('updatearticle',
+        ["article"=>$article,"categories"=>(new Categorie())->all(),"title"=>"Update article"]
+    );
         //
     }
 
     public function showArticle($id)
     {
         //
-        if(!Cache::has('showarticle-'.$id)){
+        // if(!Cache::has('showarticle-'.$id)){
             $article=ArticleInfoModel::where("id",$id)->get()->first();
             $article->slugtitre=$this->slugtitle($article->titre);
-            $view=view('showarticle',["article"=>$article])->render();
-            Cache::put('showarticle-'.$id, $view);
+            $view=view('showarticle',["article"=>$article,"title"=>"Article"])->render();
+            // Cache::put('showarticle-'.$id, $view);
 
-        }
+        // }
 
-        return Cache::get('showarticle-'.$id);
+        // return Cache::get('showarticle-'.$id);
+        return $view;
     }
 
     /**
@@ -151,13 +178,13 @@ class ArticleController extends Controller
         // echo $article;
         $article->update();
         $article->slugtitre=$this->slugtitle($article->titre);
-        $view=view('showarticle',["article"=>$article])->render();
+        // $view=view('showarticle',["article"=>$article])->render();
 
-        if(Cache::has('showarticle-'.$request->input('id'))){
+        // if(Cache::has('showarticle-'.$request->input('id'))){
 
-            Cache::forget('showarticle-'.$request->input('id'));
-        }
-        Cache::put('showarticle-'.$request->input('id'), $view);
+        //     Cache::forget('showarticle-'.$request->input('id'));
+        // }
+        // Cache::put('showarticle-'.$request->input('id'), $view);
         return redirect('/');
     }
 

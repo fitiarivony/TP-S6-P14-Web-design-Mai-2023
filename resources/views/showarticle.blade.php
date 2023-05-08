@@ -1,22 +1,14 @@
 @extends("layout.navbar-admin")
+@section('headplus')
+<meta name="description" content="{{ $article->resume }}">
 @section('content')
 <div class="page-section">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 py-3">
-          <div class="img-fluid text-center">
-            @if ($article->link==null && $article->base_64==null)
-            <span class="mai-scan-circle"></span>
-            @elseif ($article->link!=null
-            && File::exists(File::exists(storage_path('app/public/images' . $article->link))))
-
+          <div class="img-fluid text-center"  >
             <img  class="card-img-top img-thumbnail"
-            style="height:200px;" src="{{ secure_url('/'.'sary'.'/'.$article->link)}}" >
-            @else
-            <img  class="card-img-top img-thumbnail"
-            style="height:200px;" src="{{ $article->base_64 }}" >
-            @endif
-
+             src="{{ $article->base_64 }}" alt={{$article->resume}}>
           </div>
         </div>
         <div class="col-lg-6 py-3 pr-lg-5">

@@ -1,10 +1,10 @@
 @extends('layout.navbar-admin')
 
 @section('headplus')
-<script src="{{ secure_url('/stats/ckeditor/ckeditor.js') }}" ></script>
-<link href="{{secure_url('/stats/ckeditor/contents.css') }}" rel="stylesheet">
+<script src="{{ url('/stats/ckeditor/ckeditor.js') }}" ></script>
+<link href="{{url('/stats/ckeditor/contents.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
-
+<meta name="description" content="{{ $article->resume }}">
 @endsection
 
 @section('content')
@@ -31,7 +31,7 @@
                  class="form-control">
               </div>
               <div class="py-2">
-                <label for="categorie" class="form-label">Categorie:</label>
+                <label for="categorie" class="form-label">Category:</label>
 
     <select name="categorie" class="form-control">
 
@@ -55,7 +55,7 @@
 
               <div style="height: 10px;"></div>
               <div class="py-2">
-                <label for="contenu" class="form-label">Contenu:</label>
+                <label for="contenu" class="form-label">Content:</label>
                 <textarea name="contenu" id="editor">{{ $article->contenu }}</textarea>
 
                 <script>

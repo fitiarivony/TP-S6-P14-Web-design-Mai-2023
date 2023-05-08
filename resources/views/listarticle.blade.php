@@ -1,15 +1,19 @@
-<?php use Illuminate\Support\Str;
-use Illuminate\Support\Facades\File;
+<?php
+use Illuminate\Support\Str;
 
 ?>
 @extends('layout.navbar-admin')
+
+@section('headplus')
+<meta name="description" content="Articles of TalkinAI">
+@endsection
 
 @section('content')
 
 <main>
     <div class="page-section">
     <div class="row justify-content-center">
-
+       
        @for ($i=0;$i<count($articles);$i++)
         @if ($i>0 && $i%3==0)
     </div>
@@ -19,22 +23,13 @@ use Illuminate\Support\Facades\File;
             <div class="card-pricing flex-fill">
               <div class="header">
                 <div class="price-icon">
-                       @if ($article[$i]->link==null && $articles[$i]->base_64==null)
-            <span class="mai-scan-circle"></span>
-            @elseif ($article[$i]->link!=null
-            && File::exists(File::exists(storage_path('app/public/images' . $article[$i]->link))))
-
-            <img  class="card-img-top img-thumbnail"
-            style="height:200px;" src="{{ secure_url('/'.'sary'.'/'.$article[$i]->link)}}" >
-            @else
-            <img  class="card-img-top img-thumbnail"
-            style="height:200px;" src="{{ $article[$i]->base_64 }}" >
-            @endif
 
 
+                    <img  class="card-img-top img-thumbnail"
+                    style="height:200px;" src="{{ $articles[$i]->base_64 }}" alt="{{ $articles[$i]->resume }}">
 
                 </div>
-                <div class="price-title"  style="height:100px;">{{ $articles[$i]->titre }}</div>
+                <div class="price-title" style="height:50px;" >{{ $articles[$i]->titre }}</div>
               </div>
               <div class="body py-3">
 

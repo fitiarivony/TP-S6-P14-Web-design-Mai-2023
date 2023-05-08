@@ -1,9 +1,11 @@
 @extends('layout.navbar-admin')
 
 @section('headplus')
-<script src="{{ secure_url('/stats/ckeditor/ckeditor.js') }}" ></script>
-<link href="{{secure_url('/stats/ckeditor/contents.css') }}" rel="stylesheet">
+<script src="{{ url('/stats/ckeditor/ckeditor.js') }}" ></script>
+<link href="{{url('/stats/ckeditor/contents.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+<meta name="description" content="Register an article">
+
 @endsection
 
 @section('content')
@@ -28,7 +30,7 @@
                  class="form-control">
               </div>
               <div class="py-2">
-                <label for="categorie" class="form-label">Categorie:</label>
+                <label for="categorie" class="form-label">Category:</label>
 
     <select name="categorie" class="form-control">
 

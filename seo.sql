@@ -8,16 +8,16 @@ create table categorie(
     idcategorie varchar(15) not null default 'CAT'||nextval('categorie_seq'),
     nomcategorie varchar(40)
 );
-insert into categorie(nomcategorie) values
-('Jeux'),('Loisirs'),('Educatif'),('Science'),('Litterature'),('Mode')
-;
+INSERT INTO categorie (nomcategorie) VALUES ('Machine Learning');
+INSERT INTO categorie (nomcategorie) VALUES ('Deep Learning');
+INSERT INTO categorie (nomcategorie) VALUES ('Réseaux de neurones');
+INSERT INTO categorie (nomcategorie) VALUES ('Traitement de langage naturel');
 
 
 create sequence sary_seq;
 create table sary(
     id serial primary key,
     idsary varchar(15) not null default 'SAR'||nextval('sary_seq'),
-    link varchar(100) not null,
     base_64 text not null
 );
 
@@ -53,12 +53,11 @@ create table categorie_article(
 
 
 create view article_info as
-select article.*,nomcategorie,link,base_64 from article left join categorie on categorie.id=article.idcategorie
+select article.*,nomcategorie,base_64 from article left join categorie on categorie.id=article.idcategorie
 left join sary on sary.id=article.idsary;
 create view article_sary as
-select article.*,link,base_64 from article
+select article.*,base_64 from article
 left join sary on sary.id=article.idsary
 ;
 
-
-PGPASSWORD=8sfyoS2QHjrqm3lbejwi psql -h containers-us-west-149.railway.app -U postgres -p 5996 -d railway
+PGPASSWORD=uoIsSQ8bsditzBu1zbgx psql -h containers-us-west-74.railway.app -U postgres -p 6987 -d railway
