@@ -142,7 +142,6 @@ class ArticleController extends Controller
         }
 
         return Cache::get('showarticle-'.$id);
-        return $view;
     }
 
     /**
