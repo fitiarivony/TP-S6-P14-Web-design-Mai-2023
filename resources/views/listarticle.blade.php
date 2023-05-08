@@ -29,7 +29,7 @@ use Illuminate\Support\Str;
                     src="{{ $articles[$i]->base_64 }}" alt="{{ $articles[$i]->resumee }}">
 
                 </div>
-                <div class="price-title"  >{{ $articles[$i]->titre }}</div>
+                <div class="price-title text-dark"  >{{ $articles[$i]->titre }}</div>
               </div>
               <div class="body py-3">
 

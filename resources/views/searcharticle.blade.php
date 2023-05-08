@@ -46,10 +46,10 @@
 
 
                      <img  class="card-img-top img-thumbnail"
-                     style="height:200px;" src="{{ $articles[$i]->base_64 }}" alt="{{ $articles[$i]->resume }}">
+                      src="{{ $articles[$i]->base_64 }}" alt="{{ $articles[$i]->resumee }}">
 
                  </div>
-                 <div class="price-title" style="height:50px;" >{{ $articles[$i]->titre }}</div>
+                 <div class="price-title text-dark"  >{{ $articles[$i]->titre }}</div>
                </div>
                <div class="body py-3">
 
