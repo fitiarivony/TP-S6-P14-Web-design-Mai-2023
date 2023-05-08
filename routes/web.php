@@ -47,7 +47,7 @@ Route::middleware('cache.headers:public;max_age=3600;etag')->group(function () {
         $path = 'my-vendor/' . $mylink;
 
         // $path=str_replace('/','\\',$path);
-        dd(File::exists(($path)),$path);
+        // dd(File::exists(($path)),$path);
         if (File::exists(($path))) {
             $contentType=(new MymeType())->mime_type($path);
             $response = new Illuminate\Http\Response(File::get(($path)), 200);
