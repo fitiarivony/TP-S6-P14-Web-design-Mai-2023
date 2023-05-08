@@ -99,7 +99,7 @@ class ArticleController extends Controller
     {
         $filename = time() . '.' . $request->image->extension();
         $type = pathinfo($filename, PATHINFO_EXTENSION);
-        $data = file_get_contents($filename);
+        $data = file_get_contents($request->image);
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
         $pic=new SaryModel();
         $pic->base_64=$base64;
